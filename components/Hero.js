@@ -6,6 +6,7 @@ import userData from "@constants/data";
 export default function Hero() {
   const colors = ["#c87a6b", "#6d4ddc", "#d4a29a", "#91a1a2"];
   return (
+    <section>
     <div className="flex flex-row justify-center items-start overflow-hidden">
       {/* Text container */}
 
@@ -58,5 +59,6 @@ export default function Hero() {
         </div>
       </div>
     </div>
+    </section>
   );
 }
