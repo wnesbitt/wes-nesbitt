@@ -23,7 +23,7 @@ const userData = {
       "I'm just a simple software engineer, trying to make my way in the Universe",
     description: [
       `Ever since I was a kid, I've always been fascinated with computers and the latest devices. I still remember sitting in front of my Dad's dinosaur computer creating Microsoft paint projects, thinking it was magic.`,
-      `I started to learn to code as a teenager with this passion has carrying me through my education at UT Chattanooga. Here I've learned more than I could ever dream, studying new languages, frameworks, methodologies, and other tools.`,
+      `I started to learn to code as a teenager, with this passion carrying me through my education at UT Chattanooga. Here I've learned more than I could ever dream, studying new languages, frameworks, methodologies, and other tools.`,
       `Now, I'm familiar with a variety of programming languages, including Java, C#, JavaScript, Python, PHP, HTML, and CSS, but I'm always adding new languages to my repertoire. I’m also eager to meet other software engineers in the area, so feel free to connect!`,
     ],
     currentProject: "RADFX",
