@@ -1,12 +1,100 @@
-import React from "react";
+import React, { useState } from "react";
 import userData from "@constants/data";
 
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  //   Form validation
+  const [errors, setErrors] = useState({});
+
+  //   Setting button text
+  const [buttonText, setButtonText] = useState("Send");
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showFailureMessage, setShowFailureMessage] = useState(false);
+
+  const handleValidation = () => {
+    let tempErrors = {};
+    let isValid = true;
+
+    if (name.length <= 0) {
+      tempErrors["name"] = true;
+      isValid = false;
+    }
+    if (email.length <= 0) {
+      tempErrors["email"] = true;
+      isValid = false;
+    }
+    if (subject.length <= 0) {
+      tempErrors["subject"] = true;
+      isValid = false;
+    }
+    if (message.length <= 0) {
+      tempErrors["message"] = true;
+      isValid = false;
+    }
+
+    setErrors({ ...tempErrors });
+    console.log("errors", errors);
+    return isValid;
+  };
+
+  //   const [form, setForm] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let isValidForm = handleValidation();
+
+    if (isValidForm) {
+      setButtonText("Sending");
+      const res = await fetch("/api/sendgrid", {
+        body: JSON.stringify({
+          email: email,
+          name: name,
+          subject: subject,
+          message: message,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      const { error } = await res.json();
+      if (error) {
+        console.log(error);
+        setShowSuccessMessage(false);
+        setShowFailureMessage(true);
+        setButtonText("Send");
+
+        // Reset form fields
+        setName("");
+        setEmail("");
+        setSubject("");
+        setMessage("");
+        return;
+      }
+      setShowSuccessMessage(true);
+      setShowFailureMessage(false);
+      setButtonText("Send");
+      // Reset form fields
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    }
+    console.log(name, email, subject, message);
+  };
+
   return (
     <section>
       <div className="max-w-6xl mx-auto h-49 bg-white dark:bg-gray-800 antialiased">
         <h1 className=" text-5xl md:text-9xl font-bold py-20 text-center md:text-left">
-          Contact
+          Contact.
         </h1>
       </div>
       <div className="relative z-10 rounded-md shadow-md bg-[#c87a6b] p-4 md:p-10 lg:p-20 max-w-6xl mx-auto mb-20 -mt-4">
@@ -26,7 +114,7 @@ export default function Contact() {
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
-                  fill="#6d4ddc"
+                  fill="#FFFFFF"
                   className="bi bi-telephone-fill h-4 w-4 text-blue-500"
                   viewBox="0 0 16 16"
                 >
@@ -36,7 +124,8 @@ export default function Contact() {
                   />
                 </svg>
                 <p className="text-gray-50 font-light text-sm">
-                  {userData.phone}
+                  <a href="tel:9313093364">
+                  {userData.phone}</a>
                 </p>
               </div>
               <div className="flex flex-row items-center space-x-6 bg-[#c87a6b] rounded-md border border-[#d4a29a] hover:border hover:border-[#6d4ddc] p-4">
@@ -44,14 +133,16 @@ export default function Contact() {
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
-                  fill="#6d4ddc"
+                  fill="#FFFFFF"
                   className="bi bi-envelope-fill h-4 w-4 text-blue-500"
                   viewBox="0 0 16 16"
                 >
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
                 </svg>
                 <p className="text-gray-50 font-light text-sm">
+                  <a href="mailto:w_nesbitt@icloud.com">
                   {userData.email}
+                  </a>
                 </p>
               </div>
               <div className="flex flex-row items-center space-x-6 bg-[#c87a6b] rounded-md border border-[#d4a29a] hover:border hover:border-[#6d4ddc] p-4">
@@ -59,36 +150,72 @@ export default function Contact() {
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
-                  fill="#6d4ddc"
+                  fill="#FFFFFF"
                   className="bi bi-pin-fill h-4 w-4 text-blue-500"
                   viewBox="0 0 16 16"
                 >
                   <path d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A5.921 5.921 0 0 1 5 6.708V2.277a2.77 2.77 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354z" />
                 </svg>
                 <p className="text-gray-50 font-light text-sm">
+                  <a href="https://www.google.com/maps/place/Chattanooga,+TN,+USA/@35.0982149,-85.3787763,11z/data=!3m1!4b1!4m5!3m4!1s0x886060408a83e785:0x2471261f898728aa!8m2!3d35.0456297!4d-85.3096801">
                   {userData.address}
+                  </a>
                 </p>
               </div>
             </div>
           </div>
-          <form className="form rounded-lg bg-white p-4 flex flex-col">
+          <form 
+          onSubmit={handleSubmit}
+          className="form rounded-lg bg-white p-4 flex flex-col">
             <label htmlFor="name" className="text-sm text-gray-600 mx-4">
               {" "}
               Your Name
             </label>
             <input
               type="text"
-              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-blue-500"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#6d4ddc]"
               name="name"
-            />
+            /> 
+            {errors?.name && (
+              <p className="text-red-500">Name cannot be empty.</p>
+            )}
+
             <label htmlFor="email" className="text-sm text-gray-600 mx-4 mt-4">
               Email
             </label>
             <input
-              type="text"
-              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-blue-500"
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#6d4ddc]"
               name="email"
             />
+            {errors?.email && (
+            <p className="text-red-500">Email cannot be empty.</p>
+            )}
+
+            <label htmlFor="subject" className="text-sm text-gray-600 mx-4 mt-4">
+              Subject
+            </label>
+            <input
+              type="text"
+              value={subject}
+              onChange={(e) => {
+                setSubject(e.target.value);
+              }}
+              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#6d4ddc]"
+              name="subject"
+            />
+            {errors?.subject && (
+            <p className="text-red-500">Subject cannot be empty.</p>
+            )}
+
             <label
               htmlFor="message"
               className="text-sm text-gray-600 mx-4 mt-4"
@@ -98,15 +225,34 @@ export default function Contact() {
             <textarea
               rows="4"
               type="text"
-              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-blue-500"
+              className="font-light rounded-md border focus:outline-none py-2 mt-2 px-1 mx-4 focus:ring-2 focus:border-none ring-[#6d4ddc]"
               name="message"
+              value={message}
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
             ></textarea>
+             {errors?.message && (
+            <p className="text-red-500">Message body cannot be empty.</p>
+            )}
             <button
               type="submit"
               className="bg-[#6d4ddc] rounded-md w-1/2 mx-4 mt-8 py-2 text-gray-50 text-xs font-bold"
             >
-              Send Message
+              {buttonText}
             </button>
+            <div className="text-left">
+            {showSuccessMessage && (
+              <p className="text-green-500 font-semibold text-sm my-2">
+                Thank you! Your Message has been delivered.
+              </p>
+            )}
+            {showFailureMessage && (
+              <p className="text-red-500">
+                Oops! Something went wrong, please try again.
+              </p>
+            )}
+          </div>
           </form>
         </div>
       </div>

@@ -20,11 +20,11 @@ const userData = {
   ],
   about: {
     title:
-      "I'm a software engineer that",
+      "I'm just a simple software engineer, trying to make my way in the Universe",
     description: [
-      `I've been developing.`,
-      `After learning.`,
-      `But now, .`,
+      `I'm living the dream. Ever since I was a kid, I've always been fascinated with computers and the latest devices. I still remember sitting in front of my Dad's dinosaur computer creating Microsoft paint projects, thinking it was magic.`,
+      `I started to learn to code as a teenager with this passion has carrying me through my education at UT Chattanooga. Here I've learned more than I could ever dream, studying new languages, frameworks, methodologies, and other tools.`,
+      `Now, I'm familiar with a variety of programming languages, including Java, C#, JavaScript, Python, PHP, HTML, and CSS, but I'm always adding new languages to my repertoire. I’m also eager to meet other software engineers in the area, so feel free to connect!`,
     ],
     currentProject: "RADFX",
     currentProjectUrl: "https://RADFX.Vercel.app",
@@ -51,7 +51,7 @@ const userData = {
     },
   ],
   resumeUrl:
-    "https://google.com",
+    "https://drive.google.com/file/d/1LUkBJuId872Axkp2EULuwj34ia9lxP7q/view?usp=sharing",
   socialLinks: {
     linkedin: "https://www.linkedin.com/in/wesley-nesbitt",
     github: "https://github.com/wnesbitt",
