@@ -9,10 +9,6 @@ Portfolio to showcase my skills and projects as a developer. The design was deve
 - Clear React components and tailwind styling.
 - Responsive layout, works well on both Mobile and Desktop
 
-<!-- # Pages
-
-I've kept the pages as simple as possible. Only the required sections are included with minimal content. -->
-
 # Tech Stack
 
 The website is built with the following Tech Stack and deployed through [Vercel](https://vercel.com)
@@ -20,6 +16,7 @@ The website is built with the following Tech Stack and deployed through [Vercel]
 - [Next.js](https://nextjs.org) for building React Components.
 - [tailwindcss](https://tailwindcss.com) for styling.
 - [React Rough Notation](https://roughnotation.com) for Hero section highlighting.
+- [SendGrid](https://sendgrid.com) for building a Contact Form
 - [Vercel](https://vercel.com) for deployments and CI/CD.
 
 # Make It Your Own
@@ -39,7 +36,3 @@ Deployment can be done in 3 easy steps.
 # License
 
 Check out [Manu Arora](https://github.com/manuarora700/simple-developer-portfolio-website#readme) as his template is completely open source and free to use.
-
-<!-- # Support -->
-
-<!-- <a href="https://www.buymeacoffee.com/manuarora" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a> -->
