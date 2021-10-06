@@ -16,7 +16,7 @@ The website is built with the following Tech Stack and deployed through [Vercel]
 - [Next.js](https://nextjs.org) for building React Components.
 - [tailwindcss](https://tailwindcss.com) for styling.
 - [React Rough Notation](https://roughnotation.com) for Hero section highlighting.
-- [SendGrid](https://sendgrid.com) for building a Contact Form
+- [SendGrid](https://sendgrid.com) for building a Contact Form.
 - [Vercel](https://vercel.com) for deployments and CI/CD.
 
 # Make It Your Own
