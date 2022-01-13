@@ -34,7 +34,7 @@ export default function AboutMe() {
                 Contact
               </h1>
               <p className="text-lg text-gray-500 mt-4 dark:text-gray-300">
-                For any sort help / enquiry, shoot an{" "}
+                For any help/inquiry, shoot an{" "}
                 <a
                   href={`mailto:${userData.email}`}
                   className="text-gray-800 border-b-2 border-gray-800 dark:border-gray-300 font-bold dark:text-gray-300"
@@ -148,7 +148,7 @@ export default function AboutMe() {
                 className="h-20 w-20 mx-4 my-4"
               />
               <img
-                src="https://pbs.twimg.com/profile_images/1278691829135876097/I4HKOLJw.png"
+                src="https://www.drupal.org/files/project-images/screenshot_361.png"
                 className="h-20 w-20 mx-4 my-4"
               />
               <img

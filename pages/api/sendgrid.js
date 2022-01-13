@@ -7,7 +7,7 @@ async function sendEmail(req, res) {
     await sendgrid.send({
       to: "w_nesbitt@icloud.com",
       from: "w_nesbitt@icloud.com",
-      subject: `[Lead from website] : ${req.body.subject}`,
+      subject: `From wes-nesbitt Portfolio Site : ${req.body.subject}`,
       html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
       <html lang="en">
       <head>

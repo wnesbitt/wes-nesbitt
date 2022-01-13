@@ -35,19 +35,21 @@ const userData = {
       company: "University of Tennessee at Chattanooga, Chattanooga.",
       year: "2021",
       companyLink: "https://www.utc.edu",
-      desc: "Major in Computer Science with focus in Software Engineering with Minor in Business Administration. On the Dean's List multiple semesters. Nobody asks this but it's okay.",
+      desc: "Major in Computer Science with focus in Software Engineering with Minor in Business Administration. On the Dean's List multiple semesters.",
     },
     {
       title: "Internship",
       company: "First National Bank of Pulaski",
       year: "2017",
       companyLink: "https://www.fnbforyou.com",
+      desc: "Interned at FNB, providing creative solutions, overhauling outdated security systems, and putting out the occasional fires.",
     },
     {
       title: "High School",
       company: "Giles County High, Pulaski.",
       year: "2017",
       companyLink: "https://www.gcboe.us/GCHS",
+      desc: "",
     },
   ],
   resumeUrl:
